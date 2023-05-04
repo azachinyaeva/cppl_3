@@ -21,16 +21,10 @@ public:
 
 	void add_element(int num)
 	{
-		if (i < size) {
-			if (A[i] == 0)
-			{
+		if (i < size) 
+		{
 				A[i] = num;
 				i++;
-			}
-			else
-			{
-				i++;
-			}
 		}
 		else
 		{
@@ -50,14 +44,28 @@ public:
 	}
 	smart_array& operator=(const smart_array &right) 
 	{
-		delete[] A;
+		if (this != &right) 
+		{
+			delete[] A;
+			size = right.size;
+			i = right.i;
+			A = new int[size] {};
+			for (int j = 0; j < size; j++)
+			{
+				A[j] = right.A[j];
+			}
+		}
+		return *this;
+	}
+	smart_array(const smart_array& right)
+	{
 		size = right.size;
+		i = right.i;
 		A = new int[size] {};
 		for (int j = 0; j < size; j++)
 		{
-			A[i] = right.A[i];
+			A[j] = right.A[j];
 		}
-		return *this;
 	}
 };
 

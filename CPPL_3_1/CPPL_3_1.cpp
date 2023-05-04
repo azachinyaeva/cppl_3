@@ -7,8 +7,10 @@ class smart_array
 	int *A;
 	int size;
 	int i = 0;
-
+	
 public:
+	smart_array(const smart_array&) = delete;
+	smart_array& operator=(const smart_array&) = delete;
 	smart_array(int size_)
 	{
 		size = size_;
@@ -19,18 +21,13 @@ public:
 		delete[] A;
 	}
 
+
 	void add_element(int num)
 	{
-		if (i < size) {
-			if (A[i] == 0)
-			{
+		if (i < size) 
+		{
 				A[i] = num;
 				i++;
-			}
-			else
-			{
-				i++;
-			}
 		}
 		else
 		{
